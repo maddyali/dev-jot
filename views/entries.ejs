@@ -18,6 +18,8 @@
       <% }) %>
     </ul>
 
+    <h2>Total Entries: <%= totalEntries %></h2>
+
     <form action="/journal/createEntry" method="POST">
       <input type="text" placeholder="Enter Entry" name="entryItem" />
       <input type="submit" />

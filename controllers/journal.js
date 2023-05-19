@@ -4,7 +4,8 @@ module.exports = {
   getEntries: async (req, res) => {
     try {
       const entries = await Journal.find();
-      res.render("entries.ejs", { entries });
+      const totalEntries = await Journal.countDocuments();
+      res.render("entries.ejs", { entries, totalEntries });
     } catch (err) {
       console.log(err);
     }
