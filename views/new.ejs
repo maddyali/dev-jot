@@ -16,19 +16,10 @@
   </head>
   <body>
     <div class="container">
-      <nav class="navbar">
-        <h1 class="mb-4">Total Entries: <%= totalEntries %></h1>
-        <a href="/journal/new" class="btn btn-success">New Entry</a>
-      </nav>
-      <div class="mb-5">
-        <% entries.forEach(el => { %>
-        <div class="entryItem card mt-4" data-id="<%=el._id%>">
-          <div class="card-body">
-            <p class="card-text"><%=el.content%></p>
-          </div>
-        </div>
-        <% }) %>
-      </div>
+      <h1 class="mb-4">New Journal Entry</h1>
+      <form action="/journal/createEntry" method="POST">
+        <%- include('partials/form_fields') %>
+      </form>
     </div>
 
     <script src="js/main.js"></script>

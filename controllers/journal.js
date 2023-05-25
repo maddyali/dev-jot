@@ -10,6 +10,13 @@ module.exports = {
       console.log(err);
     }
   },
+  newEntry: async (req, res) => {
+    try {
+      res.render("new.ejs");
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createEntry: async (req, res) => {
     try {
       await Journal.create({ content: req.body.entryItem });
