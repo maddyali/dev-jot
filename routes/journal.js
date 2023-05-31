@@ -8,4 +8,6 @@ router.get("/new", journalController.newEntry);
 
 router.post("/createEntry", journalController.createEntry);
 
+router.delete("/deleteEntry", journalController.deleteEntry);
+
 module.exports = router;

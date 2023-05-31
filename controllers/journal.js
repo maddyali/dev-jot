@@ -26,4 +26,13 @@ module.exports = {
       console.log(err);
     }
   },
+  deleteEntry: async (req, res) => {
+    try {
+      await Journal.findOneAndDelete({ _id: req.body.entryIdFromJSFile });
+      console.log("Entry has been deleted!");
+      res.json("Deleted Entry");
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
