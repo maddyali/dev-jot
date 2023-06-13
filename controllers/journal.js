@@ -26,6 +26,26 @@ module.exports = {
       console.log(err);
     }
   },
+  edit: async (req, res) => {
+    try {
+      const JE = await Journal.findById(req.params.id);
+      res.render("edit", { el: JE });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  updateEntry: async (req, res) => {
+    try {
+      const JE = await Journal.findById(req.params.id);
+      console.log(req.body, JE);
+      JE.content = req.body.entryItem;
+      await JE.save();
+      console.log("Entry has been updated!");
+      res.redirect("/journal");
+    } catch (err) {
+      console.log(err);
+    }
+  },
   deleteEntry: async (req, res) => {
     try {
       await Journal.findOneAndDelete({ _id: req.body.entryIdFromJSFile });
