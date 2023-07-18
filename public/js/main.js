@@ -5,7 +5,7 @@ deleteBtns.forEach((btn) => {
 });
 
 async function deleteJE() {
-  const entryId = this.parentNode.parentNode.dataset.id;
+  const entryId = this.parentNode.parentNode.parentNode.dataset.id;
 
   try {
     const response = await fetch("journal/deleteEntry", {

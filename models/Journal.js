@@ -10,6 +10,10 @@ const journalSchema = new mongoose.Schema({
     default: () => Date.now(),
     immutable: true,
   },
+  userId: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Journal", journalSchema);

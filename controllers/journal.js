@@ -3,7 +3,7 @@ const Journal = require("../models/Journal");
 module.exports = {
   getEntries: async (req, res) => {
     try {
-      const entries = await Journal.find();
+      const entries = await Journal.find({ userId: req.user.id });
       const totalEntries = await Journal.countDocuments();
       res.render("entries.ejs", { entries, totalEntries });
     } catch (err) {
@@ -19,7 +19,10 @@ module.exports = {
   },
   createEntry: async (req, res) => {
     try {
-      await Journal.create({ content: req.body.entryItem });
+      await Journal.create({
+        content: req.body.entryItem,
+        userId: req.user.id,
+      });
       console.log("Entry has been added!");
       res.redirect("/journal");
     } catch (err) {
@@ -48,7 +51,6 @@ module.exports = {
   },
   deleteEntry: async (req, res) => {
     try {
-      console.log(req);
       await Journal.findOneAndDelete({ _id: req.body.entryIdFromJSFile });
       console.log("Entry has been deleted!");
       res.json("Deleted Entry");

@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const journalController = require("../controllers/journal");
+const { ensureAuth } = require("../middleware/auth");
 
-router.get("/", journalController.getEntries);
+router.get("/", ensureAuth, journalController.getEntries);
+
+// router.get("/", journalController.getEntries);
 
 router.get("/new", journalController.newEntry);
 
